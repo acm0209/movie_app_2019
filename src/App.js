@@ -1,44 +1,20 @@
 import React from 'react';
 
-function Food({name, picture}){
-  return (
-    <div>
-      <h1>I like {name}</h1>
-      <img src={picture} alt={name} />
-
-    </div>
-  )
-}
-
-const foodILike = [
-  {
-    id:1,
-  name: "Kimchi",
-  image: "https://kstory365.files.wordpress.com/2015/01/kimchi-01-cabbage.jpg"
-  },
-  {
-    id:2,
-  name: "bulgogi",
-  image: "https://img.seoul.co.kr//img/upload/2019/07/25/SSI_20190725184016.jpg"
-  },
-  {
-    id:3,
-  name: "kimbap",
-  image: "https://img.seoul.co.kr//img/upload/2019/07/25/SSI_20190725184016.jpg"
-  },
-  {
-    id:4,
-  name: "samgyetang",
-  image: "https://img.seoul.co.kr//img/upload/2019/07/25/SSI_20190725184016.jpg"
+class App extends React.Component{
+  state = {
+    isLoading:true,
+    movies:[]
+  };
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({isLoading:false,})
+    }, 6000);
   }
-];
-
-function App() {
-  return (
-    <div className="App">
-      {foodILike.map(dish => (<Food key={dish.id} name={dish.name} picture={dish.image} /> ))}
-      </div>
-  );
+  
+  render(){
+    const {isLoading} = this.state;
+    return <div>{isLoading ? "Loading ...":"We are ready"}</div>;
+  }
 }
 
 export default App;
